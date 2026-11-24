@@ -7,9 +7,9 @@ depends:
   - ripple.funnel
 @bruin */
 
--- v1 vs v2 side by side for the report card (latest run of each round).
+-- v1 vs v2 side by side for the report card (most recent run of each round, by time).
 WITH latest AS (
-    SELECT *, ROW_NUMBER() OVER (PARTITION BY round ORDER BY run_id DESC) AS rn
+    SELECT *, ROW_NUMBER() OVER (PARTITION BY round ORDER BY started_at DESC) AS rn
     FROM ripple.funnel
 )
 SELECT

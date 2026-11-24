@@ -22,7 +22,8 @@ WITH per_resident AS (
         resident_id,
         MIN(CASE WHEN action = 'scroll' THEN video_t END) AS left_at,
         MAX(CASE WHEN action IN ('like', 'comment', 'share') THEN 1 ELSE 0 END) AS engaged,
-        MAX(CASE WHEN action = 'share' THEN 1 ELSE 0 END) AS shared
+        MAX(CASE WHEN action = 'share' THEN 1 ELSE 0 END) AS shared,
+        MIN(ts) AS started_at
     FROM ripple.decisions
     GROUP BY run_id, round, video_version, resident_id
 ),
@@ -36,6 +37,7 @@ SELECT
     p.run_id,
     p.round,
     p.video_version,
+    MIN(p.started_at)                                                AS started_at,
     COUNT(*)                                                         AS residents,
     ROUND(100.0 * AVG(CASE WHEN p.left_at IS NULL OR p.left_at > 3 THEN 1 ELSE 0 END)) AS hook_hold_pct,
     ROUND(100.0 * AVG(CASE WHEN p.left_at IS NOT NULL THEN 1 ELSE 0 END))              AS scrolled_pct,
