@@ -1,0 +1,3 @@
+name: ripple-analytics
+default_connections:
+  duckdb: "duckdb-default"

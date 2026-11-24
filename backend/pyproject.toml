@@ -1,0 +1,18 @@
+[project]
+name = "ripple-backend"
+version = "0.1.0"
+description = "Ripple: test your launch video on a town of AI people before you post it."
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "python-multipart",
+    "openai",
+    "httpx",
+    "pydantic",
+    "python-dotenv",
+    "duckdb>=2.0.1",
+]
+
+[tool.uv]
+package = false

@@ -1,0 +1,29 @@
+﻿# secrets
+.env
+band_agents.json
+
+# generated data (videos, frames, events, duckdb)
+data/
+logs/
+
+# python
+.venv/
+__pycache__/
+*.pyc
+
+# node
+node_modules/
+dist/
+
+# misc
+.DS_Store
+*.log
+
+logs/runs
+logs/*.log
+*.py[cod]
+
+# test-video build leftovers
+demo/test-videos/_work_*/
+demo/test-videos/_preview_*
+*.tmp

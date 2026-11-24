@@ -1,0 +1,17 @@
+{
+  "_comment": "Copy to band_agents.json (gitignored). One BAND agent per resident/panelist; one room (chat) per community.",
+  "agents": {
+    "maya": { "agent_id": "<from app.band.ai>", "api_key": "<shown once>", "handle": "maya" },
+    "zoe": { "agent_id": "<from app.band.ai>", "api_key": "<shown once>", "handle": "zoe" },
+    "noah": { "agent_id": "<from app.band.ai>", "api_key": "<shown once>", "handle": "noah" }
+  },
+  "rooms": {
+    "campus": "<chat_id>",
+    "creators": "<chat_id>",
+    "founders": "<chat_id>",
+    "parents": "<chat_id>",
+    "gym": "<chat_id>",
+    "panel-back-room": "<chat_id>",
+    "town-hall": "<chat_id>"
+  }
+}

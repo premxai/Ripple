@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --color-page: #ffffff;
+  --color-paper: #f6f5f2;
+  --color-card: #ffffff;
+  --color-ink: #1f1d1a;
+  --color-muted: #6b665e;
+  --color-faint: #a39d93;
+  --color-line: #ecebe7;
+  --color-teal: #0ea5a4;
+  --color-teal-dark: #0b8584;
+  --color-teal-soft: #e3f4f3;
+  --color-red: #e5484d;
+  --color-red-soft: #fdecec;
+  --color-amber: #f5a524;
+  --color-amber-soft: #fef4e2;
+  --color-green: #22a06b;
+}
+
+@utility card {
+  background: var(--color-card);
+  border: 1px solid var(--color-line);
+  border-radius: 1.1rem;
+  box-shadow: 0 1px 2px rgb(31 29 26 / 0.04), 0 8px 28px rgb(31 29 26 / 0.05);
+}
+
+/* People, bubbles and labels on the map shrink less than the map when zooming out. */
+.sprite {
+  scale: var(--sprite, 1);
+}
+
+@keyframes ripple-ring {
+  0% { transform: translate(-50%, -50%) scale(0.25); opacity: 0.9; }
+  100% { transform: translate(-50%, -50%) scale(1.9); opacity: 0; }
+}
+.ripple-ring {
+  animation: ripple-ring 1.8s ease-out 3 both;
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-page);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes pop {
+  0% { transform: translateY(6px) scale(0.6); opacity: 0; }
+  60% { transform: translateY(-2px) scale(1.08); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes dots {
+  0%, 20% { opacity: 0.2; }
+  50% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+.animate-pop { animation: pop 380ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.animate-fade-in { animation: fade-in 260ms ease-out both; }
+.dot { animation: dots 1.2s infinite; }
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-pop, .animate-fade-in, .dot { animation: none; }
+}
